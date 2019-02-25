@@ -109,7 +109,7 @@ public class KeyWalletHidDevice implements KeyWalletDevice {
     }
 
     @Override
-    public booleanConnection() {
+    public boolean Connection() {
         try {
             if (mUsbManager.hasPermission(mDevice)) {
                 mInterface = mDevice.getInterface(0);

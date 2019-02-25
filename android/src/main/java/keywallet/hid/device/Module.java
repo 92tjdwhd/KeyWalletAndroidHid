@@ -94,12 +94,25 @@ public class Module extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void Connection(int index) {
+  public void Connection(int index,Promise p) {
     mKeyWalletHidDevice = keyWalletHidDeviceArray.get(index);
-    mKeyWalletHidDevice.Connection();
-
+    try{
+    boolean result =  mKeyWalletHidDevice.Connection();
+    p.resolve(result);
+    }catch(NullPointerException e){
+      p.reject(e);
+    }
   }
 
+  @ReactMethod
+  public void DisConnect(Promise p) {
+    try{
+    mKeyWalletHidDevice.DisConnect();
+    p.resolve(true);
+    }catch(Exception e){
+    p.reject(e);
+    }
+  }
   @ReactMethod
   public void IsCardPresent(Promise p) {
     WritableMap map = Arguments.createMap();

@@ -109,15 +109,17 @@ public class KeyWalletHidDevice implements KeyWalletDevice {
     }
 
     @Override
-    public void Connection() {
+    public booleanConnection() {
         try {
             if (mUsbManager.hasPermission(mDevice)) {
                 mInterface = mDevice.getInterface(0);
                 mConnection = mUsbManager.openDevice(mDevice);
                 mConnection.claimInterface(mInterface, true);
+                return true;
             } else {
                 mPIntent = PendingIntent.getBroadcast(mContext, 0, new Intent(ACTION_USB_PERMISSION), 0);
                 mUsbManager.requestPermission(mDevice, mPIntent);
+                return false;
             }
 
         } catch (NullPointerException e) {

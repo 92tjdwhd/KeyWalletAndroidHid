@@ -2,7 +2,7 @@ package keywallet.hid.device;
 
 public interface KeyWalletDevice {
 
-    void Connection();
+    boolean Connection();
 
     void DisConnect();
 

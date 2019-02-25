@@ -203,7 +203,7 @@ public class KeyWalletHidDevice implements KeyWalletDevice {
         }
 
         if ((m_abInReport[4] == 0x00) && (m_abInReport[5] == 0x01)) {
-            abOutReport[6] = SC_FINALIZE;
+            abOutReport[5] = SC_FINALIZE;
 
             // Send Report.
             synchronized (this) {
